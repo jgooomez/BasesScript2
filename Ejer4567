@@ -216,15 +216,16 @@ select @ciudadPaciente = pacientes.CIUDAD from pacientes where pacientes.codigo=
 		BEGIN 
 			SET @gentilicio=
 				(CASE @ciudadPaciente
-					WHEN 'VILLAJOYOSA' THEN 'Vilero'
-					WHEN 'El CAMPELLO' THEN 'Campellero'
-					WHEN 'ALICANTE' THEN 'Alicantino'
-					WHEN 'SAN JUAN' THEN 'Sanjuanero'
-					WHEN 'MUTXAMEL' THEN 'Mutxamelero'
+					WHEN 'VILLAJOYOSA' THEN 'Vil'
+					WHEN 'El CAMPELLO' THEN 'Cam'
+					WHEN 'ALICANTE' THEN 'Ali'
+					WHEN 'SAN JUAN' THEN 'San'
+					WHEN 'MUTXAMEL' THEN 'Mut'
 					ELSE 'Ciudad no encontrada'
 				END)
 					PRINT @gentilicio
-					UPDATE PACIENTES SET pacientes.gentilicio=@gentilicio WHERE pacientes.codigo=@cod		END
+					UPDATE PACIENTES SET gentilicio=@gentilicio WHERE pacientes.codigo=@min	
+		END
 	ELSE
 		BEGIN
 			Print 'Ese codigo no esta asociado a ningun paciente'
