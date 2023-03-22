@@ -1,0 +1,235 @@
+
+CREATE DATABASE CLINICA_BD
+GO
+USE [CLINICA_BD]
+GO
+/****** Object:  Table [dbo].[pacientes]    Script Date: 14/03/2023 16:34:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[pacientes](
+	[CODIGO] [smallint] NOT NULL,
+	[NOMBRE] [nvarchar](50) NOT NULL,
+	[DIRECCION] [nvarchar](50) NOT NULL,
+	[CIUDAD] [nvarchar](50) NOT NULL,
+	[TELEFONO] [int] NOT NULL,
+	[DIABETICO] [bit] NOT NULL,
+	[FECHANAC] [datetime2](7) NOT NULL,
+	[TURNO] [tinyint] NOT NULL,
+ CONSTRAINT [PK_pacientes (2)] PRIMARY KEY CLUSTERED 
+(
+	[CODIGO] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[visitas]    Script Date: 14/03/2023 16:34:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[visitas](
+	[codigo] [tinyint] NOT NULL,
+	[idPaciente] [smallint] NOT NULL,
+	[fechaVisita] [datetime2](7) NOT NULL,
+	[enfermedad] [nvarchar](50) NOT NULL,
+	[importe] [tinyint] NOT NULL,
+	[porcentajePago] [tinyint] NOT NULL,
+	[proximaVisita] [datetime2](7) NOT NULL,
+ CONSTRAINT [PK_visitas] PRIMARY KEY CLUSTERED 
+(
+	[codigo] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+INSERT [dbo].[pacientes] ([CODIGO], [NOMBRE], [DIRECCION], [CIUDAD], [TELEFONO], [DIABETICO], [FECHANAC], [TURNO]) VALUES (30001, N'Jose Gonzalez', N'Paseo Agran', N'ALICANTE', 856262515, 0, CAST(N'1990-08-10T00:00:00.0000000' AS DateTime2), 1)
+INSERT [dbo].[pacientes] ([CODIGO], [NOMBRE], [DIRECCION], [CIUDAD], [TELEFONO], [DIABETICO], [FECHANAC], [TURNO]) VALUES (30002, N'Federico Rodriguez', N'Travesía Desarraconàvem', N'VILLAJOYOSA', 843846078, 0, CAST(N'1965-01-10T00:00:00.0000000' AS DateTime2), 2)
+INSERT [dbo].[pacientes] ([CODIGO], [NOMBRE], [DIRECCION], [CIUDAD], [TELEFONO], [DIABETICO], [FECHANAC], [TURNO]) VALUES (30003, N'Gabriel García', N'Constitució n17 4B', N'SAN JUAN', 744671599, 0, CAST(N'1967-03-13T00:00:00.0000000' AS DateTime2), 3)
+INSERT [dbo].[pacientes] ([CODIGO], [NOMBRE], [DIRECCION], [CIUDAD], [TELEFONO], [DIABETICO], [FECHANAC], [TURNO]) VALUES (30004, N'Ana Tuent', N' C. Comercial Flitam', N'SAN JUAN', 680090786, 0, CAST(N'1989-04-14T00:00:00.0000000' AS DateTime2), 1)
+INSERT [dbo].[pacientes] ([CODIGO], [NOMBRE], [DIRECCION], [CIUDAD], [TELEFONO], [DIABETICO], [FECHANAC], [TURNO]) VALUES (30005, N'Luisa Gómez', N'Carrer Omprometre, 134B 9A', N'EL CAMPELLO', 767031177, 0, CAST(N'1983-07-15T00:00:00.0000000' AS DateTime2), 2)
+INSERT [dbo].[pacientes] ([CODIGO], [NOMBRE], [DIRECCION], [CIUDAD], [TELEFONO], [DIABETICO], [FECHANAC], [TURNO]) VALUES (30006, N'Maria Navarro', N'Carrera Destarotem', N'EL CAMPELLO', 767031177, 1, CAST(N'1954-01-16T00:00:00.0000000' AS DateTime2), 3)
+INSERT [dbo].[pacientes] ([CODIGO], [NOMBRE], [DIRECCION], [CIUDAD], [TELEFONO], [DIABETICO], [FECHANAC], [TURNO]) VALUES (30007, N'Elena Giner', N'Pasadizo Inventariesses', N'ALICANTE', 877280026, 1, CAST(N'1948-12-17T00:00:00.0000000' AS DateTime2), 1)
+INSERT [dbo].[pacientes] ([CODIGO], [NOMBRE], [DIRECCION], [CIUDAD], [TELEFONO], [DIABETICO], [FECHANAC], [TURNO]) VALUES (30012, N'Javier Satorres', N'Camino Desnieris', N'MUTXAMEL', 765293339, 1, CAST(N'1991-11-18T00:00:00.0000000' AS DateTime2), 2)
+INSERT [dbo].[pacientes] ([CODIGO], [NOMBRE], [DIRECCION], [CIUDAD], [TELEFONO], [DIABETICO], [FECHANAC], [TURNO]) VALUES (30014, N'Jorge Beltrán', N'Rambla Convulsàssim', N'SAN JUAN', 656742684, 1, CAST(N'1978-11-21T00:00:00.0000000' AS DateTime2), 3)
+INSERT [dbo].[pacientes] ([CODIGO], [NOMBRE], [DIRECCION], [CIUDAD], [TELEFONO], [DIABETICO], [FECHANAC], [TURNO]) VALUES (30015, N'Beatriz Rico', N'Walia, 21', N' VILLAJOYOSA', 965636585, 1, CAST(N'1974-12-23T00:00:00.0000000' AS DateTime2), 1)
+INSERT [dbo].[pacientes] ([CODIGO], [NOMBRE], [DIRECCION], [CIUDAD], [TELEFONO], [DIABETICO], [FECHANAC], [TURNO]) VALUES (30016, N'Roberto Saez', N'Macarena n23', N'ALICANTE', 965634041, 1, CAST(N'1969-03-24T00:00:00.0000000' AS DateTime2), 1)
+INSERT [dbo].[pacientes] ([CODIGO], [NOMBRE], [DIRECCION], [CIUDAD], [TELEFONO], [DIABETICO], [FECHANAC], [TURNO]) VALUES (30017, N'Emilio Pérez', N'Alfonso Pesquera', N'ALICANTE', 965635815, 0, CAST(N'1984-05-26T00:00:00.0000000' AS DateTime2), 2)
+INSERT [dbo].[pacientes] ([CODIGO], [NOMBRE], [DIRECCION], [CIUDAD], [TELEFONO], [DIABETICO], [FECHANAC], [TURNO]) VALUES (30018, N'Sandra Belda', N'San Pedro', N'VILLAJOYOSA', 753633365, 1, CAST(N'1983-06-27T00:00:00.0000000' AS DateTime2), 2)
+INSERT [dbo].[pacientes] ([CODIGO], [NOMBRE], [DIRECCION], [CIUDAD], [TELEFONO], [DIABETICO], [FECHANAC], [TURNO]) VALUES (30026, N'Laura Pastor', N'Prolongación Salud', N'MUTXAMEL', 616975467, 0, CAST(N'1963-09-07T00:00:00.0000000' AS DateTime2), 1)
+INSERT [dbo].[pacientes] ([CODIGO], [NOMBRE], [DIRECCION], [CIUDAD], [TELEFONO], [DIABETICO], [FECHANAC], [TURNO]) VALUES (30099, N'David Ramirez', N'Sant Rafael', N'ALICANTE', 786261666, 1, CAST(N'1972-03-01T00:00:00.0000000' AS DateTime2), 1)
+GO
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (1, 30001, CAST(N'2019-12-09T00:00:00.0000000' AS DateTime2), N'Úlcera', 50, 50, CAST(N'2019-12-11T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (2, 30001, CAST(N'2019-02-15T00:00:00.0000000' AS DateTime2), N'Migrañas', 50, 25, CAST(N'2019-05-15T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (3, 30002, CAST(N'2019-06-19T00:00:00.0000000' AS DateTime2), N'Cistitis', 40, 60, CAST(N'2019-07-19T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (4, 30004, CAST(N'2019-05-15T00:00:00.0000000' AS DateTime2), N'Anemia', 80, 40, CAST(N'2019-09-15T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (5, 30005, CAST(N'2019-10-21T00:00:00.0000000' AS DateTime2), N'Gripe', 60, 30, CAST(N'2019-12-21T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (6, 30006, CAST(N'2019-01-08T00:00:00.0000000' AS DateTime2), N'Amigdalitis', 60, 50, CAST(N'2019-01-11T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (7, 30007, CAST(N'2019-08-08T00:00:00.0000000' AS DateTime2), N'Herpes', 50, 70, CAST(N'2019-08-12T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (8, 30012, CAST(N'2019-04-07T00:00:00.0000000' AS DateTime2), N'Otitis', 80, 80, CAST(N'2019-04-10T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (9, 30014, CAST(N'2019-07-06T00:00:00.0000000' AS DateTime2), N'Migrañas', 60, 55, CAST(N'2019-07-07T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (10, 30015, CAST(N'2019-09-02T00:00:00.0000000' AS DateTime2), N'Herpes', 50, 15, CAST(N'2019-09-06T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (11, 30016, CAST(N'2019-05-14T00:00:00.0000000' AS DateTime2), N'Anemia', 45, 20, CAST(N'2019-09-14T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (12, 30017, CAST(N'2019-01-13T00:00:00.0000000' AS DateTime2), N'Anemia', 67, 50, CAST(N'2019-06-13T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (13, 30018, CAST(N'2019-04-04T00:00:00.0000000' AS DateTime2), N'Herpes', 100, 25, CAST(N'2019-04-05T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (14, 30026, CAST(N'2019-08-03T00:00:00.0000000' AS DateTime2), N'Migrañas', 50, 60, CAST(N'2019-08-07T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (15, 30099, CAST(N'2019-06-23T00:00:00.0000000' AS DateTime2), N'Otitis', 40, 40, CAST(N'2019-10-23T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (16, 30007, CAST(N'2019-09-21T00:00:00.0000000' AS DateTime2), N'Gripe', 80, 30, CAST(N'2019-11-21T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (17, 30002, CAST(N'2019-02-22T00:00:00.0000000' AS DateTime2), N'Gripe', 60, 50, CAST(N'2019-12-22T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (18, 30004, CAST(N'2019-06-30T00:00:00.0000000' AS DateTime2), N'Migrañas', 50, 70, CAST(N'2019-07-30T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (19, 30007, CAST(N'2017-05-25T00:00:00.0000000' AS DateTime2), N'Gripe', 70, 80, CAST(N'2017-08-25T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (20, 30005, CAST(N'2017-11-14T00:00:00.0000000' AS DateTime2), N'Anemia', 100, 55, CAST(N'2018-03-14T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (21, 30004, CAST(N'2017-08-15T00:00:00.0000000' AS DateTime2), N'Gripe', 40, 15, CAST(N'2017-09-15T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (22, 30004, CAST(N'2017-08-21T00:00:00.0000000' AS DateTime2), N'Otitis', 80, 20, CAST(N'2017-10-21T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (23, 30012, CAST(N'2017-07-23T00:00:00.0000000' AS DateTime2), N'Amigdalitis', 60, 50, CAST(N'2017-09-23T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (25, 30014, CAST(N'2018-12-28T00:00:00.0000000' AS DateTime2), N'Amigdalitis', 60, 25, CAST(N'2019-03-28T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (28, 30015, CAST(N'2018-11-29T00:00:00.0000000' AS DateTime2), N'Gripe', 50, 60, CAST(N'2019-01-29T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (30, 30016, CAST(N'2018-10-30T00:00:00.0000000' AS DateTime2), N'Herpes', 80, 40, CAST(N'2018-11-30T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (34, 30017, CAST(N'2018-01-30T00:00:00.0000000' AS DateTime2), N'Migrañas', 60, 30, CAST(N'2018-03-30T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (35, 30018, CAST(N'2018-04-26T00:00:00.0000000' AS DateTime2), N'Asma', 50, 50, CAST(N'2018-05-26T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (36, 30026, CAST(N'2018-03-21T00:00:00.0000000' AS DateTime2), N'Gripe', 45, 70, CAST(N'2018-06-21T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (37, 30026, CAST(N'2018-06-15T00:00:00.0000000' AS DateTime2), N'Asma', 67, 80, CAST(N'2018-07-15T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (38, 30002, CAST(N'2018-12-15T00:00:00.0000000' AS DateTime2), N'Asma', 100, 55, CAST(N'2019-01-15T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (39, 30004, CAST(N'2018-02-10T00:00:00.0000000' AS DateTime2), N'Gripe', 80, 15, CAST(N'2018-03-10T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (42, 30018, CAST(N'2018-12-03T00:00:00.0000000' AS DateTime2), N'Esguince', 90, 50, CAST(N'2019-03-05T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (45, 30015, CAST(N'2018-07-15T00:00:00.0000000' AS DateTime2), N'Anemia', 60, 70, CAST(N'2018-09-15T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (46, 30012, CAST(N'2018-10-04T00:00:00.0000000' AS DateTime2), N'Alergia', 120, 80, CAST(N'2018-04-12T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (47, 30015, CAST(N'2018-01-06T00:00:00.0000000' AS DateTime2), N'Gripe', 50, 55, CAST(N'2018-06-03T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (48, 30018, CAST(N'2018-02-04T00:00:00.0000000' AS DateTime2), N'Alergia', 70, 50, CAST(N'2018-04-05T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (49, 30026, CAST(N'2018-07-01T00:00:00.0000000' AS DateTime2), N'Esguince', 100, 25, CAST(N'2018-01-08T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (50, 30012, CAST(N'2018-06-08T00:00:00.0000000' AS DateTime2), N'Gripe', 40, 70, CAST(N'2018-08-08T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (60, 30014, CAST(N'2018-03-09T00:00:00.0000000' AS DateTime2), N'Amigdalitis', 80, 80, CAST(N'2018-09-05T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (61, 30015, CAST(N'2019-04-02T00:00:00.0000000' AS DateTime2), N'Alergia', 60, 30, CAST(N'2019-02-06T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (62, 30014, CAST(N'2019-10-12T00:00:00.0000000' AS DateTime2), N'Gripe', 60, 50, CAST(N'2019-12-11T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (63, 30018, CAST(N'2019-06-19T00:00:00.0000000' AS DateTime2), N'Esguince', 50, 70, CAST(N'2019-07-19T00:00:00.0000000' AS DateTime2))
+INSERT [dbo].[visitas] ([codigo], [idPaciente], [fechaVisita], [enfermedad], [importe], [porcentajePago], [proximaVisita]) VALUES (64, 30014, CAST(N'2019-08-05T00:00:00.0000000' AS DateTime2), N'Esguince', 80, 10, CAST(N'2019-05-10T00:00:00.0000000' AS DateTime2))
+GO
+
+--Programar script en SQL--
+
+--Ejercicio 1--
+DECLARE @cod smallint
+SET @cod=30001
+
+IF(EXISTS(SELECT * FROM PACIENTES WHERE pacientes.codigo=@cod))
+	BEGIN
+		PRINT 'Existe el paciente con el codigo: ' + cast(@cod as nvarchar)
+	END
+ELSE
+
+	BEGIN
+		PRINT 'No existe el paciente'
+	END
+
+--Ejercicio 2--
+DECLARE @cod smallint
+SET @cod=30001
+
+DECLARE @fecha datetime
+select @fecha = pacientes.FECHANAC from pacientes
+
+declare @anyoActual int
+set @anyoActual = year(GETDATE())
+
+declare @edad int
+set @edad = year(@fecha) - year(@anyoActual)
+
+IF(EXISTS(SELECT * FROM PACIENTES WHERE pacientes.codigo=@cod))
+	BEGIN
+		PRINT 'Existe el paciente con el codigo: ' + cast(@cod as nvarchar)
+		PRINT 'Nació el: ' + cast(@fecha as nvarchar)
+		PRINT 'Y su edad es de: ' + cast(@edad as nvarchar)
+	END
+ELSE
+
+	BEGIN
+		PRINT 'No existe el paciente'
+	END
+
+
+--Ejercicio3
+DECLARE @cod smallint, @nom nvarchar(30)
+SET @cod=200
+SET @nom='PEPITO LOPEZ SANCHEZ'
+
+IF(EXISTS(SELECT * FROM PACIENTES WHERE pacientes.codigo=@cod))
+	BEGIN 
+		PRINT 'Existe'
+		UPDATE PACIENTES SET pacientes.nombre=@nom WHERE pacientes.codigo=@cod
+	END
+ELSE
+	BEGIN
+		PRINT 'No existe, pero se crea'
+		INSERT INTO Pacientes VALUES (@cod,@nom, N'Paseo Agran', N'ALICANTE', 856262515, 0, CAST(N'1990-08-10T00:00:00.0000000' AS DateTime2), 1)
+	END
+
+
+--Ejercicio4
+declare @max int
+declare @min int
+declare @cont int
+declare @cod smallint
+declare @gentilicio nvarchar(50)
+declare @ciudadPaciente nvarchar (50)
+
+select @max = max(pacientes.codigo) from pacientes
+select @min = min(pacientes.codigo) from pacientes
+
+while(@min<=@max)
+begin
+select @ciudadPaciente = pacientes.CIUDAD from pacientes where pacientes.codigo=@min
+	IF(EXISTS(SELECT * FROM PACIENTES WHERE pacientes.codigo=@min))
+		BEGIN 
+			SET @gentilicio=
+				(CASE @ciudadPaciente
+					WHEN 'VILLAJOYOSA' THEN 'Vilero'
+					WHEN 'El CAMPELLO' THEN 'Campellero'
+					WHEN 'ALICANTE' THEN 'Alicantino'
+					WHEN 'SAN JUAN' THEN 'Sanjuanero'
+					WHEN 'MUTXAMEL' THEN 'Mutxamelero'
+					ELSE 'Ciudad no encontrada'
+				END)
+					PRINT @gentilicio
+		END
+	ELSE
+		BEGIN
+			Print 'Ese codigo no esta asociado a ningun paciente'
+		END
+		set @min+=1
+end
+
+--Ejercicio5
+declare @max int
+declare @min int
+declare @cod smallint
+declare @gentilicio nvarchar(50)
+declare @ciudadPaciente nvarchar (50)
+select @max = max(pacientes.codigo) from pacientes
+select @min = min(pacientes.codigo) from pacientes
+
+/*alter table pacientes
+add gentilicio char(3)*/
+
+while(@min<=@max)
+begin
+select @ciudadPaciente = pacientes.CIUDAD from pacientes where pacientes.codigo=@min
+	IF(EXISTS(SELECT * FROM PACIENTES WHERE pacientes.codigo=@min))
+		BEGIN 
+			SET @gentilicio=
+				(CASE @ciudadPaciente
+					WHEN 'VILLAJOYOSA' THEN 'Vilero'
+					WHEN 'El CAMPELLO' THEN 'Campellero'
+					WHEN 'ALICANTE' THEN 'Alicantino'
+					WHEN 'SAN JUAN' THEN 'Sanjuanero'
+					WHEN 'MUTXAMEL' THEN 'Mutxamelero'
+					ELSE 'Ciudad no encontrada'
+				END)
+					PRINT @gentilicio
+					UPDATE PACIENTES SET pacientes.gentilicio=@gentilicio WHERE pacientes.codigo=@cod		END
+	ELSE
+		BEGIN
+			Print 'Ese codigo no esta asociado a ningun paciente'
+		END
+		set @min+=1
+end
+
+
