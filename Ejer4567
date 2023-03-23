@@ -1,4 +1,5 @@
 
+
 CREATE DATABASE CLINICA_BD
 GO
 USE [CLINICA_BD]
@@ -229,6 +230,86 @@ select @ciudadPaciente = pacientes.CIUDAD from pacientes where pacientes.codigo=
 	ELSE
 		BEGIN
 			Print 'Ese codigo no esta asociado a ningun paciente'
+		END
+		set @min+=1
+end
+
+--Ejercicio6
+--select * from pacientes
+declare @cod smallint
+declare @diabetico int
+declare @turno int
+declare @max int
+declare @min int
+declare @nombre nvarchar(50)
+
+select @max = max(pacientes.codigo) from pacientes
+select @min = min(pacientes.codigo) from pacientes
+
+while(@min<=@max)
+begin
+select @diabetico = pacientes.DIABETICO from pacientes where pacientes.codigo=@min
+select @turno = pacientes.TURNO from pacientes where pacientes.codigo=@min
+select @nombre = pacientes.nombre from pacientes where pacientes.CODIGO=@min
+
+	IF(EXISTS(SELECT * FROM PACIENTES WHERE pacientes.codigo=@min))
+		BEGIN 
+			if(@diabetico = 0)
+				begin
+				if (@turno is null)
+					begin
+						print 'El paciente no es diabetico y no tiene turno'
+				end
+				else
+					begin
+						print @nombre + ',' + cast(@turno as nvarchar)
+				end
+			end
+		END
+	ELSE
+		BEGIN
+			Print 'Es diabetico'
+		END
+		set @min+=1
+end
+
+--Ejercicio6/2
+--select * from pacientes
+declare @cod smallint
+declare @diabetico int
+declare @turno int
+declare @max int
+declare @min int
+declare @nombre nvarchar(50)
+declare @suma int
+
+select @max = max(visitas.idPaciente) from visitas
+select @min = min(visitas.idPaciente) from visitas
+
+while(@min<=@max)
+begin
+select @suma = sum(visitas.importe) from visitas where visitas.idPaciente=@min and MONTH(visitas.fechaVisita) = 10
+select @diabetico = pacientes.DIABETICO from pacientes where pacientes.codigo=@min
+select @turno = pacientes.TURNO from pacientes where pacientes.codigo=@min
+select @nombre = pacientes.nombre from pacientes where pacientes.CODIGO=@min
+
+	IF(EXISTS(SELECT * FROM PACIENTES WHERE pacientes.codigo=@min))
+		BEGIN 
+			if(@diabetico = 0)
+				begin
+				if (@turno is null)
+					begin
+						print 'El paciente no es diabetico pero no tiene turno'
+				end
+				else
+					begin
+						print 'No diabetico:' + @nombre + ',' + cast(@suma as nvarchar)
+				end
+			end
+		END
+	ELSE
+		BEGIN
+			print 'Diabetico:' + @nombre + ',' + cast(@suma as nvarchar)
 		END
 		set @min+=1
 end
