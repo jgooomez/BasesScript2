@@ -281,17 +281,19 @@ declare @turno int
 declare @max int
 declare @min int
 declare @nombre nvarchar(50)
-declare @suma int
+declare @sumaoctubre int
+declare @sumaTotal int
 
 select @max = max(visitas.idPaciente) from visitas
 select @min = min(visitas.idPaciente) from visitas
 
 while(@min<=@max)
 begin
-select @suma = sum(visitas.importe) from visitas where visitas.idPaciente=@min and MONTH(visitas.fechaVisita) = 10
+select @sumaoctubre = sum(visitas.importe) from visitas where visitas.idPaciente=@min and MONTH(visitas.fechaVisita) = 10
 select @diabetico = pacientes.DIABETICO from pacientes where pacientes.codigo=@min
 select @turno = pacientes.TURNO from pacientes where pacientes.codigo=@min
 select @nombre = pacientes.nombre from pacientes where pacientes.CODIGO=@min
+select @sumaTotal = sum(visitas.importe) from visitas where visitas.idPaciente=@min
 
 	IF(EXISTS(SELECT * FROM PACIENTES WHERE pacientes.codigo=@min))
 		BEGIN 
@@ -303,15 +305,14 @@ select @nombre = pacientes.nombre from pacientes where pacientes.CODIGO=@min
 				end
 				else
 					begin
-						print 'No diabetico:' + @nombre + ',' + cast(@suma as nvarchar)
+						print 'No diabetico:' + @nombre + ',' + cast(@sumaTotal as nvarchar)
 				end
 			end
 		END
 	ELSE
 		BEGIN
-			print 'Diabetico:' + @nombre + ',' + cast(@suma as nvarchar)
+			print 'Diabetico:' + @nombre + ',' + cast(@sumaoctubre as nvarchar)
 		END
 		set @min+=1
 end
-
 
